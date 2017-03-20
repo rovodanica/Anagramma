@@ -90,8 +90,57 @@ namespace anagram
             #endregion 
 
             #region 5. feladat
-
+            Console.Write("5. feladat: Írjon be egy szót: ");
+            string szo = Console.ReadLine();
+            int andb = 0;
+            for (int i = 0; i < db; i++)
+            {
+                if(abc(abc(szavak[i])) == abc(szo))
+                {
+                    andb++;
+                    if (andb == 1) { Console.WriteLine("A szó anagrammái:"); }
+                    if (szo != szavak[i])
+                    {
+                        Console.WriteLine(szavak[i]);
+                    }
+                }
+            }
+            if (andb == 0) { Console.WriteLine("A szótárban nincs anagramma."); }
             #endregion
+
+            #region 6. feladat
+            int maxhossz = 0;
+            for (int i = 0; i < db; i++)
+            {
+                if(szavak[i].Length > maxhossz)
+                {
+                    maxhossz =  szavak[i].Length;
+                }
+            }
+            for (int i = 0; i < db; i++)
+			{
+                if(szavak[i].Length == maxhossz)
+                    {
+			        int i1 = 0;
+                    while (i1 < i && abc(szavak[i1]) != abc(szavak[i]))
+                    {
+                        i1++;
+                    }
+                    if(i1 == i) 
+                    {
+                        Console.WriteLine(szavak[i]);
+                    }
+                    for (int i2 = i+1; i2 < db; i2++)
+                    {
+                        if(abc(szavak[i]) == abc(szavak[i2]))
+                        {
+                            Console.WriteLine(szavak[i2]);
+                        }
+                    }
+                }
+			}
+            #endregion
+
             Console.ReadKey();
         }
     }
